@@ -1,10 +1,12 @@
 
 <script lang="ts">
-import SupportIcon from './icons/IconSupport.vue'
+import SupportIcon from './icons/IconDelete.vue'
 
 interface Task {
-  text: string;
-  day: string;
+  id: number
+  text: string
+  day: string
+  reminder: boolean
 }
 
 export default {
@@ -16,13 +18,12 @@ export default {
     SupportIcon
   }
 }
-
 </script>
 
 <template>
-  <div class="task">
+  <div @dblclick="$emit('toggle-reminder', task?.id)" :class="[task?.reminder ? 'reminder' : '', 'task']">
     <h3>{{ task?.text }}
-      <SupportIcon />
+      <SupportIcon @click="$emit('delete-task', task?.id)" />
     </h3>
     <p>{{ task?.day }}</p>
   </div>
