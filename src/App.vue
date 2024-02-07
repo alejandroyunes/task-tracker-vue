@@ -5,7 +5,6 @@
       <AddTask @add-task="addTask" />
     </div>
     <TasksList @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
-
     <RouterView />
   </div>
 </template>

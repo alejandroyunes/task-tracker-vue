@@ -30,9 +30,6 @@ export default {
 </template>
 
 <style scope>
-.fas {
-  color: red;
-}
 
 .task {
   background: #f4f4f4;

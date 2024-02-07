@@ -56,7 +56,6 @@ export default {
 .add-form {
   margin-bottom: 40px;
 }
-
 .form-control {
   margin: 20px 0;
 }
