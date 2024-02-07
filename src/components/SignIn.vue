@@ -34,16 +34,17 @@ export default {
         return
       }
 
-      const newTask = {
+      const newUser = {
         email: this.email,
         password: this.password,
       }
-      this.$emit('add-task', newTask)
+      this.$emit('add-user', newUser)
 
       this.email = ''
       this.password = ''
     }
-  }
+  },
+  emits: ['add-user']
 }
 </script>
 

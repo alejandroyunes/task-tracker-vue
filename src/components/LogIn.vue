@@ -35,16 +35,17 @@ export default {
         return
       }
 
-      const newTask = {
+      const loginUser = {
         email: this.email,
         password: this.password,
       }
-      this.$emit('add-task', newTask)
+      this.$emit('login-user', loginUser)
 
       this.email = ''
       this.password = ''
     }
-  }
+  },
+  emits: ['login-user']
 }
 </script>
 
