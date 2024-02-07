@@ -8,6 +8,7 @@
       <label>Password</label>
       <input type="password" v-model="password" name="password" placeholder="Password" />
     </div>
+    <p v-if="error !== null" class="error-message">{{ error }}</p>
 
     <input type="submit" value="Login" class="btn btn-block" />
     
@@ -21,6 +22,9 @@
 
 export default {
   name: 'LogIn',
+  props: {
+    error: String, // Declare the error prop type
+  },
   data() {
     return {
       email: '',
@@ -50,6 +54,12 @@ export default {
 </script>
 
 <style scoped>
+
+.error-message {
+  color: red;
+  padding-left: 8px;
+}
+
 .btn {
   display: inline-block;
   color: #fff;

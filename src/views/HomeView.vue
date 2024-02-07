@@ -1,6 +1,6 @@
 <template>
   <main>
-    <LogIn @login-user="loginUser" />
+    <LogIn @login-user="loginUser" :error="error"/>
   </main>
 </template>
 
@@ -17,20 +17,37 @@ export default {
   components: {
     LogIn
   },
+  data() {
+    return {
+      error: undefined as string | undefined,
+    };
+  },
   methods: {
     async loginUser(loginUser: User) {
-      const res = await fetch(`http://localhost:8000/signin/`, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(loginUser)
-      });
-      const data = await res.json()
-      console.log(data)
+      try {
+        const res = await fetch(`http://localhost:8000/signin/`, {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(loginUser)
+        });
+
+        if (!res.ok) {
+          throw new Error('Sign in failed. Please check your credentials.');
+        }
+
+        const data = await res.json();
+        console.log(data);
+
+        this.$router.push('/about');
+        this.error = undefined;
+      } catch (error) {
+        console.error(error);
+        this.error = 'Error signing in. Please try again.';
+      }
     },
   }
 }
 </script>
-
 
