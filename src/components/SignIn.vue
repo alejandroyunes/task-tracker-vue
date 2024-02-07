@@ -1,4 +1,7 @@
 <template>
+  <h1>
+    Sign In
+  </h1>
   <form @submit="onSubmit" class="add-form">
     <div class="form-control">
       <label>Email</label>
@@ -9,11 +12,7 @@
       <input type="password" v-model="password" name="password" placeholder="Password" />
     </div>
 
-    <RouterLink :to="{ path: '/signin' }" class="signIn">
-      <input value="Sign in" class="btn btn-block btn-sign" />
-    </RouterLink>
-
-    <input type="submit" value="Login" class="btn btn-block" />
+    <input type="submit" value="Sign In" class="btn btn-block" />
   </form>
 </template>
 
