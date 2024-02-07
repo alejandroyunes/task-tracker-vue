@@ -1,7 +1,11 @@
 <template>
   <div class="container">
-    <HeaderItem title="task tracker" />
+    <HeaderItem @toggle-add-task="toggleAddTask" title="task tracker" :showAddTask="showAddTask" />
+    <div v-if="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
     <TasksList @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
+
     <RouterView />
   </div>
 </template>
@@ -10,28 +14,38 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HeaderItem from './components/HeaderItem.vue'
 import TasksList from './components/TasksList.vue'
+import AddTask from './components/AddTask.vue'
+import type { Task } from './components/TaskItem.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderItem,
-    TasksList
+    TasksList,
+    AddTask
   },
 
   data() {
     return {
-      tasks: [] as { id: number; text: string; day: string; reminder: boolean }[],
+      tasks: [] as Task[],
+      showAddTask: false
     }
   },
   methods: {
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    },
+    addTask(task: Task) {
+      this.tasks = [...this.tasks, task]
+    },
     deleteTask(id: number) {
       if (confirm('Are you sure')) {
         this.tasks = this.tasks.filter((task) => task.id !== id)
       }
     },
     toggleReminder(id: number) {
-      console.log('toggle:', id)
-    }
+      this.tasks = this.tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task)
+    },
   },
   created() {
     this.tasks = [

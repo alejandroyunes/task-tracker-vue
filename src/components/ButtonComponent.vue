@@ -20,7 +20,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .btn {
   display: inline-block;
   background: #000;

@@ -2,7 +2,7 @@
 <script lang="ts">
 import SupportIcon from './icons/IconDelete.vue'
 
-interface Task {
+export interface Task {
   id: number
   text: string
   day: string

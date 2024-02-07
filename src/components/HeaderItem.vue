@@ -4,7 +4,8 @@ import ButtonComponent from './ButtonComponent.vue';
 export default {
   name: 'HeaderItem',
   props: {
-    title: String
+    title: String,
+    showAddTask: Boolean
   },
   components: {
     ButtonComponent,
@@ -16,7 +17,8 @@ export default {
 <template>
   <header class="header-wrapper">
     <h1 class="green">{{ title }}</h1>
-    <ButtonComponent text="Add task" color="green" />
+    <ButtonComponent @btn-click="$emit('toggle-add-task')" :color="showAddTask ? 'red' : 'green'"
+      :text="showAddTask ? 'Close' : 'Add Task'" />
   </header>
 </template>
 
