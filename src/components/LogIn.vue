@@ -9,8 +9,8 @@
       <input type="password" v-model="password" name="password" placeholder="Password" />
     </div>
 
-    <RouterLink :to="{ path: '/signin' }" class="signIn">
-      <input value="Sign in" class="btn btn-block btn-sign" />
+    <RouterLink :to="{ path: '/signup' }" class="signIn">
+      <input value="Sign up" class="btn btn-block btn-sign" />
     </RouterLink>
 
     <input type="submit" value="Login" class="btn btn-block" />

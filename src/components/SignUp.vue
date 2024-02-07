@@ -1,6 +1,6 @@
 <template>
   <h1>
-    Sign In
+    Sign Up
   </h1>
   <form @submit="onSubmit" class="add-form">
     <div class="form-control">
@@ -12,14 +12,14 @@
       <input type="password" v-model="password" name="password" placeholder="Password" />
     </div>
 
-    <input type="submit" value="Sign In" class="btn btn-block" />
+    <input type="submit" value="Sign Up" class="btn btn-block" />
   </form>
 </template>
 
 <script lang="ts">
 
 export default {
-  name: 'LogIn',
+  name: 'SignUp',
   data() {
     return {
       email: '',

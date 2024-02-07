@@ -1,17 +1,17 @@
 <template>
   <main>
-    <SignIn @add-user="addUser" />
+    <SignUp @add-user="addUser" />
   </main>
 </template>
 
 <script lang="ts">
-import SignIn from '@/components/SignIn.vue';
+import SignUp from '@/components/SignUp.vue';
 import type { User } from './HomeView.vue';
 
 export default {
-  name: 'HomeVue',
+  name: 'SignUpView',
   components: {
-    SignIn
+    SignUp
   },
   methods: {
     addUser(loginUser: User) {
