@@ -23,7 +23,7 @@
 export default {
   name: 'LogIn',
   props: {
-    error: String, // Declare the error prop type
+    error: String, 
   },
   data() {
     return {

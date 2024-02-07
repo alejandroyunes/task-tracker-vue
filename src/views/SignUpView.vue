@@ -1,6 +1,6 @@
 <template>
   <main>
-    <SignUp @add-user="addUser" />
+    <SignUp @add-user="addUser" :error="error" />
   </main>
 </template>
 
@@ -13,17 +13,36 @@ export default {
   components: {
     SignUp
   },
+  data() {
+    return {
+      error: undefined as string | undefined,
+    };
+  },
   methods: {
     async addUser(loginUser: User) {
-      const res = await fetch(`http://localhost:8000/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(loginUser)
-      });
-      const data = await res.json()
-      console.log(data)
+      try {
+        const res = await fetch(`http://localhost:8000/signup`, {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(loginUser)
+        });
+        if (!res.ok) {
+          if (res.status === 400) {
+            this.error = 'Email is already registered. Please use a different email.';
+            return
+          } else {
+            throw new Error('Sign in failed. Please check your credentials.');
+          }
+        }
+        const data = await res.json()
+        this.$router.push('/about');
+        console.log(data)
+      } catch (error) {
+        console.error(error);
+        this.error = 'Error signing up. Please try again';
+      }
     }
   },
 }
