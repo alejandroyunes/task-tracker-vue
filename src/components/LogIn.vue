@@ -9,11 +9,11 @@
       <input type="password" v-model="password" name="password" placeholder="Password" />
     </div>
 
+    <input type="submit" value="Login" class="btn btn-block" />
+    
     <RouterLink :to="{ path: '/signup' }" class="signIn">
       <input value="Sign up" class="btn btn-block btn-sign" />
     </RouterLink>
-
-    <input type="submit" value="Login" class="btn btn-block" />
   </form>
 </template>
 
@@ -56,7 +56,7 @@ export default {
   background: black;
   border: none;
   padding: 10px 20px;
-  margin: 5px;
+  margin: 5px 5px 15px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;

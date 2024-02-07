@@ -18,8 +18,16 @@ export default {
     LogIn
   },
   methods: {
-    loginUser(loginUser: User) {
-      console.log(loginUser)
+    async loginUser(loginUser: User) {
+      const res = await fetch(`http://localhost:8000/signin/`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(loginUser)
+      });
+      const data = await res.json()
+      console.log(data)
     },
   }
 }
