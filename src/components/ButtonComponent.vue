@@ -21,6 +21,7 @@ export default {
 
 
 <style>
+
 .btn {
   display: inline-block;
   background: #000;
