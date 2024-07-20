@@ -36,11 +36,9 @@ export default {
             throw new Error('Sign in failed. Please check your credentials.');
           }
         }
-        const data = await res.json()
+        // const data = await res.json()
         this.$router.push('/about');
-        console.log(data)
       } catch (error) {
-        console.error(error);
         this.error = 'Error signing up. Please try again';
       }
     }

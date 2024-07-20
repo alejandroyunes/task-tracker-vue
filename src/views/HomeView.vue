@@ -1,6 +1,6 @@
 <template>
   <main>
-    <LogIn @login-user="loginUser" :error="error"/>
+    <LogIn @login-user="loginUser" :error="error" />
   </main>
 </template>
 
@@ -37,8 +37,7 @@ export default {
           throw new Error('Sign in failed. Please check your credentials.');
         }
 
-        const data = await res.json();
-        console.log(data);
+        // const data = await res.json();
 
         this.$router.push('/about');
         this.error = undefined;
